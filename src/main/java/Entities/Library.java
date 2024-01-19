@@ -3,70 +3,92 @@ package Entities;
 import java.util.ArrayList;
 
 public class Library {
+
+    public String name;
     private ArrayList<Book> books;
-    
-    public Library(){
+
+    public Library() {
         books = new ArrayList<>();
     }
-    
-    public void addBook(Book book){
-        for(Book item : books){
-            if(item.equals(book)){
-                book.count++;
+
+    public void addBook(Book book) {
+        for (Book existingBook : books) {
+            if (existingBook.name.equalsIgnoreCase(book.name) && existingBook.author.equalsIgnoreCase(book.author)) {
+                existingBook.increaseCount(book.count);
                 return;
             }
         }
-        
-        books.add(book);        
+
+        books.add(book);
     }
-    
-    public void showBooks(){
-        for(Book i : books){
-            System.out.println(i.fullInfo());
+
+    public void showBooks() {
+        for (Book book : books) {
+            System.out.println(book.fullInfo());
         }
     }
-    
+
 //    public void removeBookByNameAndAuthor(String name, String author){
 //        Book book = new Book();
 //        if(book.getName().equals(name) && book.getAuthor().equals(author)){
 //            books.remove(book);
 //        }
 //    }
-    public void removeBook(Book book){
-        books.remove(book);
+    public void removeBookByName(String name) {
+        for (Book book : books) {
+            books.remove(book);
+            return;
+        }
     }
-    
-    public void removeAll(){
-        books.removeAll(books);
-    }
-    
-    public ArrayList<Book> searchBooksByAuthor(String author){
-        ArrayList<Book> result = new ArrayList<>();
-        
-        for(Book book:books){
-            if(book.getAuthor().equals(author)){
-                result.add(book);
+
+
+    public Book findBookById(int bookId) {
+        for (Book book : books) {
+            if (book.getId() == bookId) {
+                return book;
             }
         }
-        
-        return result;
+        return null;
     }
-    
-    public ArrayList<Book> searchBooksByName(String name){
-        ArrayList<Book> result = new ArrayList<>();
-        
-        for(Book book : books){
-            if(book.name.equals(name)){
-                result.add(book);
+
+    public Book findBookByName(String name) {
+        for (Book book : books) {
+            if (book.name.equalsIgnoreCase(name)) {
+                return book;
             }
         }
-        return result;
+        return null;
     }
-    
-    
-    
-    
-    
-    
-    
+
+    public Book findBookByAuthor(String author) {
+        for (Book book : books) {
+            if (book.author.equalsIgnoreCase(author)) {
+                return book;
+            }
+        }
+        return null;
+    }
+
+    public Book findBookByNameAndAuthor(String name, String author) {
+        for (Book book : books) {
+            if (book.name.equalsIgnoreCase(name) && book.author.equalsIgnoreCase(author)) {
+                return book;
+            }
+        }
+        return null;
+    }
+
+//    public ArrayList<Book> findBookByNameAndAuthor(String name, String author) {
+//        ArrayList<Book> result = new ArrayList<>();
+//
+//        for (Book book : books) {
+//            if (book.name.equalsIgnoreCase(name) && book.author.equalsIgnoreCase(author)) {
+//                result.add(book);
+//            } else {
+//                System.out.println("Enter the name of the book and author correctly.");
+//            }
+//        }
+//
+//        return result;
+//    }
 }

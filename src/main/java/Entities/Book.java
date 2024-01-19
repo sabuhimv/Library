@@ -9,18 +9,21 @@ public class Book {
     public String author;
     public String language;
     public int price;
-    public int count=1;
+    public int count;
 
-    public Book(String name, String author, String language, int price) {
+    public Book(String name, String author, String language, int price, int count) {
         this.name = name;
         this.author = author;
         this.language = language;
         this.price = price;
+        if (count >= 0) {
+            this.count = count;
+        }
     }
 
     public String fullInfo() {
 //        System.out.println(name + author + language + price + count);
-        return name + " " + author + " " + language + " Qiymet : " + price + " Say : " + count;
+        return "Name : " + name + "\nAuthor: " + author + "\nLanguage: " + language + "\nPrice: " + price + "\nCount : " + count + "\n";
     }
 
     public Book() {
@@ -32,15 +35,15 @@ public class Book {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public void increaseCount(int addCount) {
+        if (addCount >= 0) {
+            this.count += addCount;
+
+        }
     }
 
-    public String getAuthor() {
-        return author;
-    }
-    public int getCount() {
-        return count;
+    public void reduceCount(int subtractCount) {
+        this.count -= subtractCount;
     }
 
 }
