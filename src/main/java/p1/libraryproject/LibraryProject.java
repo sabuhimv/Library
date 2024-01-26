@@ -48,18 +48,18 @@ public class LibraryProject {
                     String language = scan.nextLine();
 
                     System.out.println("Price: ");
-                    int price = scan.nextInt();
-//                    String priceStr = String.valueOf(price);
+                    String priceStr = scan.nextLine();
+                    int price=Integer.parseInt(priceStr);
 
                     System.out.println("Count: ");
-                    int count = scan.nextInt();
-//                    String countStr = String.valueOf(count);
+                    String countStr = scan.nextLine();
+                    int count=Integer.parseInt(countStr);
                     
                     Book newBook = new Book(name, author, language, price, count);
 
                     if (Helper.isValidString(name) && Helper.isValidString(author) && Helper.isValidString(language) && Helper.isValidNumber(price) && Helper.isValidNumber(count)) {
                         library.addBook(newBook);
-                        System.out.println("Book added");
+                        System.out.println("Book added to the " + libName + "\n");
                     } else {
                         System.out.println("Enter correct values!\n");
                     }
@@ -72,7 +72,8 @@ public class LibraryProject {
                     String authorName = scan.nextLine();
 
                     System.out.println("Enter new price: ");
-                    int newPrice = scan.nextInt();
+                    String newPriceStr = scan.nextLine();
+                    int newPrice = Integer.parseInt(newPriceStr);
 
                     Book bookUpdate = library.findBookByName(bookName);
 
@@ -80,7 +81,7 @@ public class LibraryProject {
 
                     if (nameExist != null && Helper.isValidString(bookName) && Helper.isValidString(authorName) && Helper.isValidNumber(newPrice)) {
                         bookUpdate.price = newPrice;
-                        System.out.println("Price of book updated!");
+                        System.out.println("Price of book updated! \n");
                     } else {
                         System.out.println("Please enter both book name and author name correctly!\n");
                     }
