@@ -21,9 +21,14 @@ public class Book {
         }
     }
 
-    public String fullInfo() {
-//        System.out.println(name + author + language + price + count);
-        return "Name : " + name + "\nAuthor: " + author + "\nLanguage: " + language + "\nPrice: " + price + "\nCount : " + count + "\n";
+    public void fullInfo() {
+//        return "Name : " + name + "\nAuthor: " + author + "\nLanguage: " + language + "\nPrice: " + price + "\nCount : " + count + "\n";
+        System.out.println("\n");
+        System.out.println("Name : " + name);
+        System.out.println("Author : " + author);
+        System.out.println("Language : " + language);
+        System.out.println("Price : " + price);
+        System.out.println("Count : " + count);
     }
 
     public Book() {
@@ -38,12 +43,13 @@ public class Book {
     public void increaseCount(int addCount) {
         if (addCount >= 0) {
             this.count += addCount;
-
         }
     }
 
     public void reduceCount(int subtractCount) {
-        this.count -= subtractCount;
+        if (subtractCount >= 0) {
+            this.count -= subtractCount;
+        }
     }
-
+    
 }
