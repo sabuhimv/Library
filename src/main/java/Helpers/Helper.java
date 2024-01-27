@@ -18,7 +18,7 @@ public class Helper {
         try {
             input = Integer.parseInt(choice);
         } catch (Exception e) {
-            System.out.println("\nEnter number");
+            System.out.println("\n");
         }
 
         return input;

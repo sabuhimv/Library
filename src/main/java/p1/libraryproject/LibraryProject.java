@@ -17,10 +17,10 @@ public class LibraryProject {
 
             String libName = scan.nextLine();
             if (libName.isEmpty() || libName.isBlank() || libName.length() < 3) {
-                System.out.println("This name is not correct!!!!");
+                System.out.println("This name is not correct!!!!\n");
                 continue;
             } else {
-                System.out.println("Welcome to the " + libName);
+                System.out.println("Welcome to the " + libName + " library");
             }
 
             Library library = new Library();
