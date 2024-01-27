@@ -18,7 +18,7 @@ public class Helper {
         try {
             input = Integer.parseInt(choice);
         } catch (Exception e) {
-            System.out.println("\nEnter number");
+            System.out.println("");
         }
 
         return input;
@@ -29,7 +29,17 @@ public class Helper {
     }
 
     public static boolean isValidNumber(int num) {
-        return num > 0;
+        return num>0;
+    }
+
+    public static boolean isValidNumber1(String num) {
+        try {
+            Integer.parseInt(num);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
     }
 
 //    public static boolean isValidInteger(String input) {

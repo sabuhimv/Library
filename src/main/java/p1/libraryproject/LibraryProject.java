@@ -17,10 +17,10 @@ public class LibraryProject {
 
             String libName = scan.nextLine();
             if (libName.isEmpty() || libName.isBlank() || libName.length() < 3) {
-                System.out.println("This name is not correct!!!!");
+                System.out.println("This name is not correct!!!!\n");
                 continue;
             } else {
-                System.out.println("Welcome to the " + libName);
+                System.out.println("Welcome to the " + libName +" Library");
             }
 
             Library library = new Library();
@@ -41,6 +41,10 @@ public class LibraryProject {
                     System.out.println("Book name: ");
                     String name = scan.nextLine();
 
+                    if(!Helper.isValidString(name)){
+                        return;
+                    }
+
                     System.out.println("Author name: ");
                     String author = scan.nextLine();
 
@@ -54,10 +58,10 @@ public class LibraryProject {
                     System.out.println("Count: ");
                     String countStr = scan.nextLine();
                     int count=Integer.parseInt(countStr);
-                    
+
                     Book newBook = new Book(name, author, language, price, count);
 
-                    if (Helper.isValidString(name) && Helper.isValidString(author) && Helper.isValidString(language) && Helper.isValidNumber(price) && Helper.isValidNumber(count)) {
+                    if (Helper.isValidString(name) && Helper.isValidString(author) && Helper.isValidString(language) && Helper.isValidNumber(price) && Helper.isValidNumber(count) && Helper.isValidNumber1(priceStr) && Helper.isValidNumber1(countStr)) {
                         library.addBook(newBook);
                         System.out.println("Book added to the " + libName + "\n");
                     } else {
@@ -81,7 +85,7 @@ public class LibraryProject {
 
                     if (nameExist != null && Helper.isValidString(bookName) && Helper.isValidString(authorName) && Helper.isValidNumber(newPrice)) {
                         bookUpdate.price = newPrice;
-                        System.out.println("Price of book updated! \n");
+                        System.out.println("Price of book has updated!\n");
                     } else {
                         System.out.println("Please enter both book name and author name correctly!\n");
                     }
@@ -135,13 +139,23 @@ public class LibraryProject {
                             System.out.println("Book name: ");
                             String findBookName = scan.nextLine();
                             Book foundBookByName = library.findBookByName(findBookName);
-                            foundBookByName.fullInfo();
+                            if(foundBookByName != null) {
+                                foundBookByName.fullInfo();
+                            }
+                            else{
+                                System.out.println("Enter correct book name\n");
+                            }
                             break;
                         case 2:
                             System.out.println("Author name: ");
                             String findBookAuthor = scan.nextLine();
                             Book foundBookByAuthor = library.findBookByAuthor(findBookAuthor);
-                            foundBookByAuthor.fullInfo();
+                            if(foundBookByAuthor != null) {
+                                foundBookByAuthor.fullInfo();
+                            }
+                            else{
+                                System.out.println("Enter correct book name\n");
+                            }
                             break;
                         case 3:
                             System.out.println("Find with book name and author name ");
@@ -170,7 +184,7 @@ public class LibraryProject {
                     continueRunning = false;
                     System.out.println("Closed");
                 } else{
-                    System.out.println("Enter number 1-6 range");
+                    System.out.println("Enter number from 1-6 range");
                 } 
                 
 

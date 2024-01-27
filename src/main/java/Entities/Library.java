@@ -14,7 +14,7 @@ public class Library {
     public void addBook(Book book) {
 
         for (Book existingBook : books) {
-            if (existingBook.name.equalsIgnoreCase(book.name) && existingBook.author.equalsIgnoreCase(book.author) && existingBook.language.equalsIgnoreCase(book.language)) {
+            if (existingBook.name.equalsIgnoreCase(book.name) && existingBook.author.equalsIgnoreCase(book.author) && existingBook.language.equalsIgnoreCase(book.language) && existingBook.price == book.price) {
                 existingBook.increaseCount(book.count);
                 return;
             }
